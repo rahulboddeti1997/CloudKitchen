@@ -3,8 +3,8 @@ import { Grid } from '@mui/material';
 import AppLayout from '../helpers/appLayout';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { foodItems, funnyFacts } from '../helpers/store';
-const MenuPage = () => {
 
+const MenuPage = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const handleHover = (index) => {
@@ -18,23 +18,28 @@ const MenuPage = () => {
   return (
     <>
       <AppLayout />
-      <div style={{ height: '100%', padding: 50, paddingLeft: 70, paddingRight: 0, marginTop: 100 }}>
-        <Grid container spacing={2}>
+      <div
+        style={{
+          height: '100%',
+          padding: 50,
+          marginTop: 100,
+          fontFamily: 'Arial, sans-serif', // Recommended font for laptop view
+        }}
+      >
+        <Grid container spacing={2} sx={{ marginLeft: '-50px', marginRight: '-1000px' }}>
           {foodItems.map((item, index) => (
             <Grid
               key={index}
-              xs={12}
+              xs={24}
               sm={10}
               md={6}
               lg={3.5}
-              style={{
-                margin: 10,
-              }}
+              item
+              sx={{ marginLeft: '5px', marginRight: '5px' }}
             >
               <div
                 className={`card ${hoveredItem === index ? 'flipped' : ''}`}
                 style={{
-                  width: '100%',
                   height: '100%',
                   transformStyle: 'preserve-3d',
                   transition: 'transform 0.5s ease',
@@ -43,6 +48,8 @@ const MenuPage = () => {
                   borderRadius: 10,
                   display: 'flex',
                   perspective: '1000px',
+                  width: '100%',
+                  fontFamily: 'Helvetica, Arial, sans-serif', // Recommended font for mobile view
                 }}
                 onMouseEnter={() => handleHover(index)}
                 onMouseLeave={handleHoverEnd}
@@ -54,13 +61,13 @@ const MenuPage = () => {
                     width: '100%',
                     height: '100%',
                     backfaceVisibility: 'hidden',
-                    display: 'flex'
+                    display: 'flex',
                   }}
                 >
                   <img
                     src={item.img}
                     alt="Food"
-                    width={300}
+                    width={500}
                     style={{
                       borderTopLeftRadius: 10,
                       borderBottomLeftRadius: 10,
@@ -80,7 +87,7 @@ const MenuPage = () => {
                     }}
                   >
                     <span style={{ marginBottom: 4, paddingLeft: 10 }}>
-                      <b style={{ fontSize: 17, fontWeight: 900 }}>{item.name}</b>
+                      <b style={{ fontSize: 20, fontWeight: 1000 }}>{item.name}</b>
                     </span>
                     <span
                       style={{
@@ -115,7 +122,25 @@ const MenuPage = () => {
                     transform: 'rotateY(180deg)',
                   }}
                 >
-                 <div style={{borderRadius: 10, backgroundColor: '#000080', width: '100%', height: '100%', padding: 50, color: 'white', fontSize: 20}}><b>{funnyFacts[item.name][Math.floor(Math.random() * funnyFacts[item.name].length)]}</b></div>
+                  <div
+                    style={{
+                      borderRadius: 10,
+                      backgroundColor: '#000080',
+                      width: '100%',
+                      height: '100%',
+                      padding: 50,
+                      color: 'white',
+                      fontSize: 20,
+                    }}
+                  >
+                    <b>
+                      {
+                        funnyFacts[item.name][
+                          Math.floor(Math.random() * funnyFacts[item.name].length)
+                        ]
+                      }
+                    </b>
+                  </div>
                 </div>
               </div>
             </Grid>

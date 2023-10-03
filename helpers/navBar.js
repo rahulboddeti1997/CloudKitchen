@@ -2,7 +2,6 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Link, Box, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Image from 'next/image';
-
 const NavBar = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
